@@ -15,13 +15,16 @@ Saraburi Agent API เป็นระบบ API กลาง (Central Agent API)
 - ระบบ RTI Saraburi
 ---
 
+## view อัพเดท 08/01/2569
+- ใช้ได้เฉพาะ ระบบ RTI Saraburi
+
 ## Technology Stack
 
 - Python 3.12
 - FastAPI
 - Uvicorn (ASGI Server)
 - Docker / Docker Compose
-- MySQL / MariaDB
+- MS SQL Server
 - REST API (JSON)
 
 ---
@@ -90,16 +93,18 @@ cp .env.example .env
 แก้ไขไฟล์ .env ให้ตรงกับสภาพแวดล้อมของหน่วยงาน
 
 ```env
-APP_NAME=Saraburi Agent API
+APP_NAME=Saraburi Agent API SSB
 APP_ENV=production
 APP_PORT=18080
 
 # MySQL
 DB_HOST=YOUR_DB_HOST
-DB_PORT=3306
+DB_PORT=1433
 DB_USER=YOUR_DB_USER
 DB_PASS=YOUR_DB_PASSWORD
 DB_NAME=YOUR_DB_NAME
+# ระบุ Driver ให้ตรงกับที่เราลง (แนะนำตัว 17 หรือ 18)
+DB_DRIVER=ODBC Driver 17 for SQL Server
 
 API_KEY=YOUR_API_KEY
 API_ALLOWED_IP1=203.157.115.86 #อันนี้เป็น ip จาก สสจ.
@@ -259,10 +264,9 @@ https://<DOMAIN>.moph.go.th/api/v1/monitor/status
 )
 ```
 
-### ขอรับ API_KEY
-> หมายเหตุ:
-> ค่า `API_KEY` สำหรับการเชื่อมต่อระบบ Saraburi Agent API  
-> ให้ประสานงานขอรับได้ที่  
+### ขอรับ API_KEY และ UPDATE Endpoint
+ได้ที่ LINE OA ดิจิทัล สสจ.สระบุรี ลงทะเบียนด้วย Provider ID
+https://line.me/R/ti/p/@580nooeh
+
 > **สำนักงานสาธารณสุขจังหวัดสระบุรี  
 > กลุ่มงานสุขภาพดิจิทัล**
-
