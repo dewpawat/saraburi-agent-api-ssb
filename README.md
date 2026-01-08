@@ -74,8 +74,8 @@ Saraburi Agent API เป็นระบบ API กลาง (Central Agent API)
 
 ```bash
 cd /opt
-git clone https://github.com/dewpawat/saraburi-agent-api.git
-cd saraburi-agent-api
+git clone https://github.com/dewpawat/saraburi-agent-api-ssb.git
+cd saraburi-agent-api-ssb
 ```
 
 > หมายเหตุ:
@@ -133,12 +133,12 @@ docker ps
 ผลลัพธ์ที่ควรเห็น
 จะต้องมี container ของระบบปรากฏอยู่ในรายการ เช่น
 ```text
-saraburi_agent_api-api   saraburi-agent-api   0.0.0.0:18080->18080/tcp
+saraburi_agent_api-api   saraburi-agent-api-ssb   0.0.0.0:18080->18080/tcp
 ```
 > โดยมีความหมายดังนี้:
 > saraburi_agent_api-api
 > ชื่อ container ของระบบ
-> saraburi-agent-api
+> saraburi-agent-api-ssb
 > ชื่อ image ที่ถูก build ขึ้นมา
 > 0.0.0.0:18080->18080/tcp
 > ระบบเปิดให้เรียกใช้งานผ่าน port 18080 ของเครื่อง serve
@@ -221,8 +221,8 @@ systemctl restart apache2
     RequestHeader set X-Forwarded-Proto "https"
     RequestHeader set X-Forwarded-Port "443"
 
-    ErrorLog ${APACHE_LOG_DIR}/saraburi-agent-api-error.log
-    CustomLog ${APACHE_LOG_DIR}/saraburi-agent-api-access.log combined
+    ErrorLog ${APACHE_LOG_DIR}/saraburi-agent-api-ssb-error.log
+    CustomLog ${APACHE_LOG_DIR}/saraburi-agent-api-ssb-access.log combined
 </VirtualHost>
 ```
 3) หลังจากตั้งค่าแล้ว restart Apache:
